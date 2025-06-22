@@ -444,6 +444,16 @@ class DeepResearch {
                   }`
               )
               .join("\n");
+              
+          const sourceContentMarkDown =
+            "\n\n---\n\n" +
+            sources
+              .map(
+                (item, idx) =>
+                  `\[${idx + 1}\]:[${item.title ? `"${item.title.replaceAll('"', ' ')}"` : `${idx + 1}`}](${item.url})`
+              )
+              .join('\n');
+          this.onMessage("message", { type: "text", text: sourceContentMarkDown });
           content += sourceContent;
         }
       }
